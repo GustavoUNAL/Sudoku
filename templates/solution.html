@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Solución del Sudoku</title>
+    <style>
+        table { border-collapse: collapse; margin: 20px auto; }
+        td { width: 40px; height: 40px; text-align: center; border: 1px solid #000; font-size: 18px; }
+        .bold-border { border: 2px solid #000; }
+        .given { background-color: #e0e0e0; }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Solución del Sudoku</h1>
+    <table>
+        {% for i in range(9) %}
+        <tr>
+            {% for j in range(9) %}
+            <td class="{{ 'bold-border' if j % 3 == 0 else '' }} {{ 'bold-border' if i % 3 == 0 else '' }} {{ 'given' if puzzle[i][j] != 0 else '' }}">
+                {{ solution[i][j] }}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <div style="text-align: center;">
+        <a href="{{ url_for('index') }}">Resolver otro Sudoku</a>
+    </div>
+</body>
+</html>
